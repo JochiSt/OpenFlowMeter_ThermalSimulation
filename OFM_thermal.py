@@ -24,10 +24,16 @@ if not os.path.exists(sim_dir):
 # Parameters of the Setup
 ################################################################################
 # Keep in mind: Unit = Meter
+
+# Put everything into a 6mm OD Swagelock pipe with 4mm ID
+# Outer planes of the pipe will be at constant room temperature
 PIPE_OUTER_DIAMETER = 6E-3
 PIPE_INNER_DIAMETER = 4E-3
+PIPE_LENGTH         = 100E-3
 
-PIPE_LENGTH = 100E-3
+# PT100
+PT100_HEIGHT        = 2E-3
+PT100_THICKNESS     = 1E-3
 
 
 ################################################################################
@@ -43,13 +49,23 @@ upper_pipe_wall = factory.addRectangle( -PIPE_LENGTH/2, PIPE_INNER_DIAMETER/2, 0
                                         PIPE_LENGTH, (PIPE_OUTER_DIAMETER-PIPE_INNER_DIAMETER)/2)
 lower_pipe_wall = factory.addRectangle( -PIPE_LENGTH/2, -PIPE_OUTER_DIAMETER/2, 0, 
                                         PIPE_LENGTH, (PIPE_OUTER_DIAMETER-PIPE_INNER_DIAMETER)/2)
-#air   = factory.addRectangle( 0, 1, 0,  1, 1)
+                                        
+gas_volume      = factory.addRectangle( -PIPE_LENGTH/2, -PIPE_INNER_DIAMETER/2, 0, 
+                                        PIPE_LENGTH, PIPE_INNER_DIAMETER)
+                                        
+pt100_volume    = factory.addRectangle( -PT100_THICKNESS/2, -PT100_HEIGHT/2, 0,
+                                        PT100_THICKNESS, PT100_HEIGHT)
+
+# remove the pt100 volume from the gas volume. Note, the PT100 volume is empty
+# and will not get meshed at this stage
+factory.cut([(2, gas_volume)], [(2, pt100_volume)])
 
 factory.synchronize()
-ph_pipe_walls = add_physical_group(2, [upper_pipe_wall, lower_pipe_wall], "steel_v2a")
-#ph_air = add_physical_group(2, [air], "air")
 
-gmsh.model.mesh.setSize(gmsh.model.getEntities(0), 0.1)
+ph_pipe_walls = add_physical_group(2, [upper_pipe_wall, lower_pipe_wall], "steel_v2a")
+ph_gas        = add_physical_group(2, [gas_volume], "gas")
+
+gmsh.model.mesh.setSize( gmsh.model.getEntities(0), 0.1e-3)
 gmsh.model.mesh.generate(2)
 
 # show mesh & export
