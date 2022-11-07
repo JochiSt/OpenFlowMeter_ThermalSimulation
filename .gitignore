@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ignore generated file
+.opt
+
+# ignore ELMER folders
+simdata/
+data/
