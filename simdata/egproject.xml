@@ -3611,7 +3611,7 @@
          </widget>
          <widget type="Edit">
             <key>/Navier-Stokes/BoundaryCondition/Velocity 1/2</key>
-            <value>20</value>
+            <value>0.002</value>
          </widget>
          <widget type="CheckBox">
             <key>/Helmholtz Equation/BoundaryCondition/Plane wave outlet condition/2</key>
