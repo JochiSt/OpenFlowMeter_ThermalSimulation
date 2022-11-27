@@ -6,14 +6,14 @@ Header
 End
 
 Simulation
-  Max Output Level = 5
+  Max Output Level = 6
   Coordinate System = Cartesian
   Coordinate Mapping(3) = 1 2 3
   Simulation Type = Steady state
-  Steady State Max Iterations = 1
+  Steady State Max Iterations = 5
   Output Intervals(1) = 1
-  Solver Input File = case.sif
-  Post File = case.vtu
+  Solver Input File = OFM.sif
+  Post File = OFM.vtu
 End
 
 Constants
@@ -35,7 +35,7 @@ End
 
 Body 2
   Target Bodies(1) = 2
-  Name = "Body 2"
+  Name = "Body Property 2"
   Equation = 1
   Material = 2
   Initial condition = 2
@@ -76,8 +76,8 @@ End
 
 Solver 1
   Equation = Navier-Stokes
-  Procedure = "FlowSolve" "FlowSolver"
   Variable = Flow Solution[Velocity:2 Pressure:1]
+  Procedure = "FlowSolve" "FlowSolver"
   Exec Solver = Always
   Stabilize = True
   Optimize Bandwidth = True
