@@ -30,6 +30,15 @@ Now ELMER FEM should be ready for usage. In case you want to look at the
 simulation output, `Paraview` is one software, you can use. It can be installed 
 via `sudo apt install paraview`.
 
+#### ELMER GUI
+For the ElmerGUI, QT5 is needed.
+```bash
+sudo apt install qt5-default qtscript5-dev libqwt-qt5-dev libqt5svg5-dev
+```
+Go to the build folder and redo the cmake configuration
+```bash
+```
+
 ## Setup
 Setup a virtual python environment and install the required packages via
 ```
