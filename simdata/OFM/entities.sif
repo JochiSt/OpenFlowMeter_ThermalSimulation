@@ -1,0 +1,13 @@
+!------ Skeleton for body section -----
+Body 1
+  Name = pipe
+End
+
+Body 2
+  Name = gas
+End
+
+Body 3
+  Name = pt100
+End
+

@@ -1,0 +1,4 @@
+! ----- names for bodies -----
+$ pipe = 1
+$ gas = 2
+$ pt100 = 3
