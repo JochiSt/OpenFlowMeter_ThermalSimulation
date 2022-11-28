@@ -134,3 +134,6 @@ dmypy.json
 # ignore ELMER folders
 simdata/
 data/
+
+# ignore FreeCAD simulation dir
+OFM_Thermal_2/*
