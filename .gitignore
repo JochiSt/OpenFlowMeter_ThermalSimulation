@@ -137,3 +137,4 @@ data/
 
 # ignore FreeCAD simulation dir
 OFM_Thermal_2/*
+*.FCStd1
